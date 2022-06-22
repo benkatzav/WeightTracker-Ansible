@@ -1,0 +1,21 @@
+# THIS IS AN EXAMPLE
+
+[staging]
+LB-IP:VM1-PORT
+LB-IP:VM2-PORT
+
+[staging:vars]
+ansible_connection=ssh
+ansible_user=<VMs username>
+ansible_ssh_pass=<Your Scale Set VMs Password>
+
+[staging:vars]
+HOST_URL=<Your Host URL>
+OKTA_ORG_URL=<OKTA ORG URL>
+OKTA_CLIENT_ID=<client ID>
+OKTA_CLIENT_SECRET=<secret>
+PGHOST=<postgres host>
+PGUSERNAME=<postgres username>
+PGDATABASE=<database>
+PGPASSWORD=<postgres password>
+PGPORT=<postgres port>

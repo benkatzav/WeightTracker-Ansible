@@ -1,0 +1,73 @@
+--- 
+  - name: Update & upgrade packages
+    apt:
+      upgrade: 'True'
+      update_cache: yes
+
+  - name: Install reqired packages
+    apt:
+      name: ['git', 'curl', 'wget']
+      state: present
+
+  - name: Installing nodejs
+    apt:
+      name: nodejs
+      state: latest
+
+  - name: Ansible shell module multiple commands
+    shell: 'curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -'
+    args:
+      warn: false
+
+  - name: Delete content & directory
+    file:
+      state: absent
+      path: /{{ app_dir }}/
+
+  - name: Clone a bootcamp-app from github
+    git:
+      repo: https://github.com/benkatzav/bootcamp-app.git
+      dest: /{{ app_dir }}/
+      clone: yes
+      update: yes
+
+  - name: Creates the .env File
+    template:
+      src: ../templates/.env.j2
+      dest: /{{ app_dir }}/.env
+
+  - name: Installing npm
+    npm:
+      name: nodemon
+      path: /{{ app_dir }}/
+
+  - name: Install pm2
+    npm:
+      name: pm2
+      global: yes
+   
+  - name: Start Application
+    shell:
+      cmd: pm2 start npm -- run dev
+      chdir: /{{ app_dir }}/
+
+  - name: saving the state of pm2
+    shell:
+     cmd: pm2 save
+     chdir: /{{ app_dir }}/
+     executable: /bin/bash
+
+  - name: starting the state of pm2
+    shell:
+      cmd: pm2 startup
+      chdir: /{{ app_dir }}/
+      executable: /bin/bash	
+
+  - name: Initialize Tables in DB
+    shell:
+      cmd: npm run initdb
+      chdir: /{{ mydir }}/       
+    run_once: 'True'
+
+  - name: reboot machine
+    reboot:
