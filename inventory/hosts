@@ -1,8 +1,8 @@
 # THIS IS AN EXAMPLE
 
 [staging]
-LB-IP:VM1-PORT
-LB-IP:VM2-PORT
+host1 ansible_ssh_port=<VM PORT> ansible_ssh_host=<YOUR LB-IP>
+host2 ansible_ssh_port=<VM PORT> ansible_ssh_host=<YOUR LB-IP>
 
 [staging:vars]
 ansible_connection=ssh
