@@ -1,9 +1,8 @@
 ---
-- hosts: all
+- hosts: staging
   become: true
   vars:
-    app_dir_name: "bootcamp-app"   
     app_dir: "home/ubuntu/bootcamp-app"
-  
+
   roles:
     - role: common
