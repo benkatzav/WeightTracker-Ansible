@@ -1,0 +1,10 @@
+variable "server_location" {}
+variable "rg_name" {}
+variable "apps_set_nsg" {}
+variable "apps_subnet" {}
+variable "lbnatpool" {}
+variable "bpepool" {}
+variable "admin_user" {}
+variable "admin_password" {}
+variable "vm_config" {}
+variable "vmss_name" {}
