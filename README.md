@@ -1,7 +1,6 @@
 # WeightTracker - Ansible & Terraform
-Using Ansible in order to install the Weight Tracker through all its application servers.  
-
-And Terraform to build the infrastructure of the Weight Tracker application
+Using Ansible in order to install the Weight Tracker app and everything it requires through all its application servers
+& Using Terraform to build the infrastructure of the Weight Tracker application
 
 ## Infrastructure Diagram: (Treat the VMs inside the web tier as Scale Set)
 ![TOPOLOGY](https://user-images.githubusercontent.com/88583978/173969411-c62c8e3d-83ec-40d5-afd7-db42da983d7a.png)
@@ -11,7 +10,7 @@ And Terraform to build the infrastructure of the Weight Tracker application
 2. Used PostgreSQL managed databased (flexible) that is not accessible from the internet
 3. Using Auto-Scaling which increases the number of VM instances in the scale set when the load is increased (application demand increased)
 4. The Ansible playbooks are used to deploy the Weight Tracker application - cloning the git repo, installing nodejs and everything else the app requires. 
-5. Everything is automated, once you initiate the infrastructure using terraform init, plan, apply all you need to go to your control machine configure the application hosts in the ```hosts.ini``` file in the inventory folder and run the ansible playbook using the following command ```ansible-playbook webservers.yml```
+5. Everything is automated, once you initiate the infrastructure using terraform init, plan, apply all you need to go to your control machine configure the application hosts and your OKTA and Postgres info in the ```hosts.ini``` file in the inventory folder and run the ansible playbook using the following command ```ansible-playbook webservers.yml```
 
 ## Requirements
 
