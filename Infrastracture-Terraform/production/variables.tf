@@ -45,3 +45,27 @@ variable "admin_password" {
   type        = string
   default     = "password is defined in tfvars file"
 }
+
+variable "domain_prefix" {
+  description = "Define domains prefix"
+  type        = string
+  default     = "prefix"
+}
+
+variable "vm_config" {
+  description = "Define VM size"
+  type        = string
+  default     = "Standard_B1ms"
+}
+
+variable "maximum_vms" {
+  description = "Define maximum VMs amount"
+  type        = number
+  default     = 0
+}
+
+variable "minimum_vms" {
+  description = "Define minimum VMs amount"
+  type        = number
+  default     = 0
+}
