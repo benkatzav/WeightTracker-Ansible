@@ -55,17 +55,17 @@ variable "domain_prefix" {
 variable "vm_config" {
   description = "Define VM size"
   type        = string
-  default     = "Standard_B1ms"
+  default     = "Standard_B2s"
 }
 
 variable "maximum_vms" {
   description = "Define maximum VMs amount"
   type        = number
-  default     = 0
+  default     = 5
 }
 
 variable "minimum_vms" {
   description = "Define minimum VMs amount"
   type        = number
-  default     = 0
+  default     = 3
 }
